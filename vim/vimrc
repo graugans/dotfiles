@@ -46,3 +46,7 @@ let g:airline_powerline_fonts = 1
 " Theming
 "let base16colorspace=256 
 "colorscheme base16-summerfruit-dark 
+
+" Git gutter
+let g:gitgutter_enabled = 1
+
