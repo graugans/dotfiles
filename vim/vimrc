@@ -50,3 +50,19 @@ let g:airline_powerline_fonts = 1
 " Git gutter
 let g:gitgutter_enabled = 1
 
+" disable background color erase
+if &term =~ '256color'
+    set t_ut=
+endif
+
+" enable 24 bit color support if supported
+if (has('mac') && empty($TMUX) && has("termguicolors"))
+    set termguicolors
+endif
+
+
+" toggle invisible characters
+set list
+set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
+set showbreak=↪
+
