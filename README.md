@@ -8,6 +8,9 @@ This is a collection of dotfiles and scripts I use for customizing They should b
 
 ```
 git clone https://github.com/graugans/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
+git submodule init
+git submodule update
 ```
 
 
