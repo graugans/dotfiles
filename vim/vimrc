@@ -50,6 +50,11 @@ let g:airline_powerline_fonts = 1
 " Git gutter
 let g:gitgutter_enabled = 1
 
+
+" NERDTree
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+
 " disable background color erase
 if &term =~ '256color'
     set t_ut=
