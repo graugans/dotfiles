@@ -81,6 +81,9 @@ set hlsearch                " highlight search results
 set incsearch               " set incremental search, like modern browsers
 set nolazyredraw            " don't redraw while executing macros
 
+" Tab control
+set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+
 " display relative line numbers
 set relativenumber
 
