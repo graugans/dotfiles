@@ -20,7 +20,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'chriskempson/base16-vim'
 Plugin 'SirVer/ultisnips'
-Plugin 'wincent/command-t'
+Plugin 'ctrlpvim/ctrlp.vim'
 
 Plugin 'ntpeters/vim-better-whitespace'
 " All of your Plugins must be added before the following line
@@ -50,15 +50,9 @@ let g:airline_powerline_fonts = 1
 " Git gutter
 let g:gitgutter_enabled = 1
 
-
 " NERDTree
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
-
-" disable background color erase
-if &term =~ '256color'
-    set t_ut=
-endif
 
 " enable 24 bit color support if supported
 if (has('mac') && empty($TMUX) && has("termguicolors"))
@@ -66,8 +60,11 @@ if (has('mac') && empty($TMUX) && has("termguicolors"))
 endif
 
 " Theming
-"let base16colorspace=256
-"colorscheme base16-summerfruit-dark
+if filereadable(expand("~/.vimrc_background"))
+      let base16colorspace=256
+      source ~/.vimrc_background
+endif
+
 
 " toggle invisible characters
 set list
@@ -84,8 +81,8 @@ set nolazyredraw            " don't redraw while executing macros
 " Tab control
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 
-" display relative line numbers
-set relativenumber
+" display relative line numbers and current one
+set number relativenumber
 
 " Key mappings
 let mapleader = ","
