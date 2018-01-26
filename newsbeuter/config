@@ -1,0 +1,19 @@
+max-items        100 # such comments are possible, too
+browser          links
+show-read-feeds  no
+
+unbind-key       R
+bind-key         ^R    reload-all
+
+
+# Theme Solarized Dark
+color listnormal        color244 color234
+color listfocus         color166 color235
+color info              color136 color235
+color background        color244 color234
+color article           color244 color234
+color listnormal_unread color166 color234 bold
+color listfocus_unread color166 color235
+
+
+
