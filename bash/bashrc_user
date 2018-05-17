@@ -1,0 +1,60 @@
+# This is my user defined ~/.bashrc to use it you need to add somesthing like this to
+# your regular bashrc
+#
+# # User defined bashrc
+# # You may want to put all your additions into a separate file like
+# # ~/.bashrc_user
+#
+# if [ -f ~/.bashrc_user ]; then
+#     . ~/.bashrc_user
+# fi
+#
+
+# Get some fancy prompt with current git branch
+export PS1='\[\033[0;32m\]\[\033[0m\033[0;32m\]\u\[\033[0;36m\] @ \[\033[0;36m\]\h \w\[\033[0;32m\]$(__git_ps1)\n\[\033[0;32m\]└─\[\033[0m\033[0;32m\] \$\[\033[0m\033[0;32m\] ▶\[\033[0m\] '
+
+# Color themes
+export TERM=screen-256color
+
+# Use base16 colors
+BASE16_SHELL=$HOME/.dotfiles/base16-shell/
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+
+# Midnight commander skin
+export MC_SKIN=~/.dotfiles/mc/solarized.ini
+
+
+
+# flush scren
+# Ther is some garbage when using base16-shell
+clear
+
+alias cleanssh='ssh-keygen -f "/home/deegech/.ssh/known_hosts" -R 192.168.0.69'
+
+# Autoload SSH keys into the ssh-agent
+SSH_ENV="$HOME/.ssh/environment"
+
+function start_agent {
+     echo "Initialising new SSH agent..."
+     /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
+     echo succeeded
+     chmod 600 "${SSH_ENV}"
+     . "${SSH_ENV}" > /dev/null
+     /usr/bin/ssh-add;
+     # Modify this this to fit your key names
+     /usr/bin/ssh-add ~/.ssh/id_rsa;
+     /usr/bin/ssh-add ~/.ssh/id_rsa-ge;
+}
+
+# Source SSH settings, if applicable
+if [ -f "${SSH_ENV}" ]; then
+     . "${SSH_ENV}" > /dev/null
+     #ps ${SSH_AGENT_PID} doesn't work under cywgin
+     ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
+         start_agent;
+     }
+else
+     start_agent;
+fi
+
+
