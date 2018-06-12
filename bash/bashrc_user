@@ -26,10 +26,13 @@ export MC_SKIN=~/.dotfiles/mc/solarized.ini
 
 
 # flush scren
-# Ther is some garbage when using base16-shell
+# There is some garbage when using base16-shell
 clear
 
 alias cleanssh='ssh-keygen -f "/home/deegech/.ssh/known_hosts" -R 192.168.0.69'
+
+# This will change the current working directory after quitting mc
+alias mc='. /usr/share/mc/bin/mc-wrapper.sh'
 
 # Autoload SSH keys into the ssh-agent
 SSH_ENV="$HOME/.ssh/environment"
