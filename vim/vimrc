@@ -94,3 +94,6 @@ nmap <leader><space><space> :%s/\n\{2,}/\r\r/g<cr>
 " NERDTree
 nmap <leader>ne :NERDTree<cr>
 map <silent> <C-n> :NERDTreeFocus<CR>
+"Change formatting behaviour for ``=`` command
+"for details check ``:help cinoptions-values``
+set cino=N-s,g0,t0
